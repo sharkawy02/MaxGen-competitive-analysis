@@ -1,320 +1,710 @@
-// Navigation Active State
-document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('.section');
+<!DOCTYPE html>
+<html lang="en">
 
-    // Smooth scroll + active state
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxGen Competitive Analysis Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-    // Update active nav on scroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (scrollY >= sectionTop - 100) {
-                current = section.getAttribute('id');
-            }
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    });
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2>MaxGen</h2>
+            <span>Competitive Intel</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive" class="active">Executive Overview</a></li>
+            <li><a href="#benchmarking">Brand Benchmarking</a></li>
+            <li><a href="#social">Social Media</a></li>
+            <li><a href="#creative">Creative Analysis</a></li>
+            <li><a href="#paid">Paid Media</a></li>
+            <li><a href="#budget">Budget Intel</a></li>
+            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+        </ul>
+    </nav>
 
-    // Initialize Charts
-    initPostingChart();
-    initPillarsChart();
-    initContentCostChart();
-    initAdSpendChart();
-    initBudgetChart();
-});
+    <main class="dashboard">
+        <header class="topbar">
+            <h1>Competitive Analysis Framework</h1>
+            <div class="meta">
+                <span class="market">Egypt</span>
+                <span class="date">February 2, 2026</span>
+            </div>
+        </header>
 
-// Posting Frequency Chart
-function initPostingChart() {
-    const ctx = document.getElementById('postingChart');
-    if (!ctx) return;
+        <!-- Section 1: Executive Overview -->
+        <section id="executive" class="section">
+            <h2>1. Executive Overview</h2>
+            <div class="cards-grid">
+                <div class="card highlight">
+                    <h3>Market Intensity</h3>
+                    <p class="big-stat">HIGH</p>
+                    <span>Crowded market with aggressive competition</span>
+                </div>
+                <div class="card">
+                    <h3>MaxGen Position</h3>
+                    <p>Premium, Transparent, Science-First</p>
+                </div>
+                <div class="card opportunity">
+                    <h3>Key Opportunity</h3>
+                    <p>Education-First Marketing</p>
+                </div>
+                <div class="card threat">
+                    <h3>Key Threat</h3>
+                    <p>Muscle Add's Distribution Power (Noon/Amazon)</p>
+                </div>
+            </div>
+            <div class="market-segments">
+                <h3>Market Segments</h3>
+                <div class="segment-grid">
+                    <div class="segment science"><strong>Science-Backed:</strong> MaxGen, Dr. M. Mahmoud</div>
+                    <div class="segment lifestyle"><strong>Lifestyle & Flavor:</strong> Evolve, Muscle Add</div>
+                    <div class="segment natural"><strong>Clean/Natural:</strong> Pure Ganic, Keep Going</div>
+                    <div class="segment generic"><strong>Marketplace Fillers:</strong> Elements</div>
+                </div>
+            </div>
+        </section>
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['MaxGen', 'Evolve', 'Pure Ganic', 'Dr. M. Mahmoud', 'Muscle Add', 'Keep Going', 'Elements'],
-            datasets: [
-                {
-                    label: 'Facebook',
-                    data: [10, 10, 5, 10, 10, 4, 2],
-                    backgroundColor: '#4267B2'
-                },
-                {
-                    label: 'Instagram',
-                    data: [10, 10, 5, 10, 10, 4, 2],
-                    backgroundColor: '#E1306C'
-                },
-                {
-                    label: 'TikTok',
-                    data: [5, 10, 2, 10, 10, 1, 0],
-                    backgroundColor: '#00f2ea'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#8b949e' }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: '#8b949e' },
-                    grid: { color: '#30363d' }
-                },
-                y: {
-                    ticks: { color: '#8b949e' },
-                    grid: { color: '#30363d' },
-                    title: {
-                        display: true,
-                        text: 'Posts/Week',
-                        color: '#8b949e'
-                    }
-                }
-            }
-        }
-    });
-}
+        <!-- Section 2: Brand Benchmarking -->
+        <section id="benchmarking" class="section">
+            <h2>2. Brand & Competitor Benchmarking</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Positioning</th>
+                            <th>Core Promise</th>
+                            <th>Target Audience</th>
+                            <th>Science vs Lifestyle</th>
+                            <th>Trust Indicators</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="client-row">
+                            <td><strong>MaxGen</strong></td>
+                            <td>Premium Local Science</td>
+                            <td>Research-backed, high dose</td>
+                            <td>Fitness enthusiasts</td>
+                            <td><span class="bar" style="--science:70%;--lifestyle:30%"></span> 70/30</td>
+                            <td>Official HQ, detailed labels</td>
+                        </tr>
+                        <tr>
+                            <td>Evolve</td>
+                            <td>Lifestyle & Flavor</td>
+                            <td>Taste, variety</td>
+                            <td>General gym-goers</td>
+                            <td><span class="bar" style="--science:40%;--lifestyle:60%"></span> 40/60</td>
+                            <td>"Backed in Egypt"</td>
+                        </tr>
+                        <tr>
+                            <td>Pure Ganic</td>
+                            <td>Natural Performance</td>
+                            <td>Purity, clean energy</td>
+                            <td>Health-conscious</td>
+                            <td><span class="bar" style="--science:50%;--lifestyle:50%"></span> 50/50</td>
+                            <td>"Pure" naming</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. M. Mahmoud</td>
+                            <td>Authority Figure</td>
+                            <td>Doctor formulated</td>
+                            <td>Hardcore bodybuilders</td>
+                            <td><span class="bar" style="--science:90%;--lifestyle:10%"></span> 90/10</td>
+                            <td>"Dr." title, personal brand</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Add</td>
+                            <td>American Quality</td>
+                            <td>Made in USA</td>
+                            <td>Mass market</td>
+                            <td><span class="bar" style="--science:50%;--lifestyle:50%"></span> 50/50</td>
+                            <td>Retail footprint</td>
+                        </tr>
+                        <tr>
+                            <td>Keep Going</td>
+                            <td>Safe & Certified</td>
+                            <td>Informed Choice</td>
+                            <td>Tested athletes</td>
+                            <td><span class="bar" style="--science:60%;--lifestyle:40%"></span> 60/40</td>
+                            <td>Informed Choice cert</td>
+                        </tr>
+                        <tr>
+                            <td>Elements</td>
+                            <td>Generic Essentials</td>
+                            <td>Budget-friendly</td>
+                            <td>Price-sensitive</td>
+                            <td><span class="bar" style="--science:30%;--lifestyle:70%"></span> 30/70</td>
+                            <td>Noon presence</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-// Content Pillars Chart
-function initPillarsChart() {
-    const ctx = document.getElementById('pillarsChart');
-    if (!ctx) return;
+        <!-- Section 3: Social Media Analysis -->
+        <section id="social" class="section">
+            <h2>3. Social Media Organic Content Analysis</h2>
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Posting Frequency</h3>
+                    <canvas id="postingChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Content Pillars</h3>
+                    <canvas id="pillarsChart"></canvas>
+                </div>
+            </div>
+            <div class="table-container">
+                <h3>Engagement Rate by Content Type</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Video/Reels</th>
+                            <th>Static Image</th>
+                            <th>Carousel</th>
+                            <th>Stories</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="client-row">
+                            <td>MaxGen</td>
+                            <td>Moderate</td>
+                            <td>Low</td>
+                            <td>Moderate</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Evolve</td>
+                            <td class="high">High</td>
+                            <td>Moderate</td>
+                            <td class="high">High</td>
+                            <td class="high">High</td>
+                        </tr>
+                        <tr>
+                            <td>Pure Ganic</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. M. Mahmoud</td>
+                            <td class="very-high">Very High</td>
+                            <td class="high">High</td>
+                            <td class="high">High</td>
+                            <td class="very-high">Very High</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Add</td>
+                            <td class="high">High</td>
+                            <td>Moderate</td>
+                            <td>Moderate</td>
+                            <td>Moderate</td>
+                        </tr>
+                        <tr>
+                            <td>Keep Going</td>
+                            <td>Moderate</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Elements</td>
+                            <td>N/A</td>
+                            <td>Very Low</td>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['Educational', 'Promotional', 'Lifestyle/UGC', 'Entertainment'],
-            datasets: [
-                {
-                    label: 'MaxGen',
-                    data: [40, 40, 20, 0],
-                    borderColor: '#ffd700',
-                    backgroundColor: 'rgba(255, 215, 0, 0.2)'
-                },
-                {
-                    label: 'Dr. M. Mahmoud',
-                    data: [70, 20, 10, 0],
-                    borderColor: '#58a6ff',
-                    backgroundColor: 'rgba(88, 166, 255, 0.2)'
-                },
-                {
-                    label: 'Muscle Add',
-                    data: [10, 30, 40, 20],
-                    borderColor: '#f85149',
-                    backgroundColor: 'rgba(248, 81, 73, 0.2)'
-                },
-                {
-                    label: 'Evolve',
-                    data: [10, 50, 40, 0],
-                    borderColor: '#a371f7',
-                    backgroundColor: 'rgba(163, 113, 247, 0.2)'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#8b949e' }
-                }
-            },
-            scales: {
-                r: {
-                    angleLines: { color: '#30363d' },
-                    grid: { color: '#30363d' },
-                    pointLabels: { color: '#8b949e' },
-                    ticks: { display: false }
-                }
-            }
-        }
-    });
-}
+        <!-- Section 4: Creative Analysis -->
+        <section id="creative" class="section">
+            <h2>4. Creative & Visual Analysis</h2>
+            <div class="table-container">
+                <h3>Visual Style Comparison</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Consistency</th>
+                            <th>Color Psychology</th>
+                            <th>Packaging</th>
+                            <th>UGC vs Studio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="client-row">
+                            <td>MaxGen</td>
+                            <td>High</td>
+                            <td>Black/Blue</td>
+                            <td>High</td>
+                            <td>Balanced</td>
+                        </tr>
+                        <tr>
+                            <td>Evolve</td>
+                            <td>Medium</td>
+                            <td>Vibrant Pop-colors</td>
+                            <td>High</td>
+                            <td>High UGC</td>
+                        </tr>
+                        <tr>
+                            <td>Pure Ganic</td>
+                            <td>High</td>
+                            <td>Green/White</td>
+                            <td>Medium</td>
+                            <td>Studio</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. M. Mahmoud</td>
+                            <td>Medium</td>
+                            <td>White/Red</td>
+                            <td>Medium</td>
+                            <td>Face dominant</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Add</td>
+                            <td>High</td>
+                            <td>Red/Black</td>
+                            <td>Very High</td>
+                            <td>Very High UGC</td>
+                        </tr>
+                        <tr>
+                            <td>Keep Going</td>
+                            <td>High</td>
+                            <td>Black/Neon Green</td>
+                            <td>High</td>
+                            <td>Studio</td>
+                        </tr>
+                        <tr>
+                            <td>Elements</td>
+                            <td>Low</td>
+                            <td>White/Blue</td>
+                            <td>Low</td>
+                            <td>Studio</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-// Content Cost Chart
-function initContentCostChart() {
-    const ctx = document.getElementById('contentCostChart');
-    if (!ctx) return;
+        <!-- Section 5: Paid Media -->
+        <section id="paid" class="section">
+            <h2>5. Paid Media Analysis</h2>
+            <div class="subsection">
+                <h3>Funnel Structure by Brand</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Awareness (Top)</th>
+                                <th>Consideration (Mid)</th>
+                                <th>Conversion (Bottom)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="client-row">
+                                <td>MaxGen</td>
+                                <td>Social Boosts</td>
+                                <td>Educational Reels</td>
+                                <td>Retargeting (Meta)</td>
+                            </tr>
+                            <tr>
+                                <td>Evolve</td>
+                                <td>Influencer Shoutouts</td>
+                                <td>Taste Testing</td>
+                                <td>Bundles & Flash Sales</td>
+                            </tr>
+                            <tr>
+                                <td>Pure Ganic</td>
+                                <td>Lifestyle Ads</td>
+                                <td>Ingredient Deep-dives</td>
+                                <td>Direct-to-Site</td>
+                            </tr>
+                            <tr>
+                                <td>Dr. M. Mahmoud</td>
+                                <td>Viral Education</td>
+                                <td>Comparison Videos</td>
+                                <td>Website</td>
+                            </tr>
+                            <tr>
+                                <td>Muscle Add</td>
+                                <td>Retail Network</td>
+                                <td>Sponsorships</td>
+                                <td>Marketplace Ads</td>
+                            </tr>
+                            <tr>
+                                <td>Keep Going</td>
+                                <td>Brand Awareness</td>
+                                <td>Certification Logic</td>
+                                <td>Website Traffic</td>
+                            </tr>
+                            <tr>
+                                <td>Elements</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>Marketplace Internal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="subsection">
+                <h3>Meta Ads Library Findings</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Est. Active Ads</th>
+                                <th>Primary Formats</th>
+                                <th>Boosted vs Custom</th>
+                                <th>Landing Page</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="client-row">
+                                <td>MaxGen</td>
+                                <td>10-20</td>
+                                <td>Carousel, Image</td>
+                                <td>Mix</td>
+                                <td>Website</td>
+                            </tr>
+                            <tr>
+                                <td>Evolve</td>
+                                <td>20-40</td>
+                                <td>Reels, Stories</td>
+                                <td>Custom</td>
+                                <td>DM / Website</td>
+                            </tr>
+                            <tr>
+                                <td>Pure Ganic</td>
+                                <td>&lt;10</td>
+                                <td>Single Image</td>
+                                <td>Boosted</td>
+                                <td>Website</td>
+                            </tr>
+                            <tr>
+                                <td>Dr. M. Mahmoud</td>
+                                <td>30+</td>
+                                <td>Video</td>
+                                <td>Boosted</td>
+                                <td>Website</td>
+                            </tr>
+                            <tr>
+                                <td>Muscle Add</td>
+                                <td>50+ (Indirect)</td>
+                                <td>Video, Static</td>
+                                <td>Custom</td>
+                                <td>Noon / Amazon</td>
+                            </tr>
+                            <tr>
+                                <td>Keep Going</td>
+                                <td>&lt;10</td>
+                                <td>Static</td>
+                                <td>Boosted</td>
+                                <td>Website</td>
+                            </tr>
+                            <tr>
+                                <td>Elements</td>
+                                <td>0</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="subsection">
+                <h3>Google Ads Presence</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Search (Brand)</th>
+                                <th>Search (Generic)</th>
+                                <th>Shopping</th>
+                                <th>Display</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="client-row">
+                                <td>MaxGen</td>
+                                <td>High</td>
+                                <td>Low</td>
+                                <td>Medium</td>
+                                <td>Low</td>
+                            </tr>
+                            <tr>
+                                <td>Evolve</td>
+                                <td>Medium</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                            </tr>
+                            <tr>
+                                <td>Dr. M. Mahmoud</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                            </tr>
+                            <tr>
+                                <td>Muscle Add</td>
+                                <td class="very-high">Very High</td>
+                                <td class="high">High</td>
+                                <td class="high">High</td>
+                                <td class="high">High</td>
+                            </tr>
+                            <tr>
+                                <td>Elements</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                                <td class="high">High</td>
+                                <td>Low</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['MaxGen', 'Evolve', 'Pure Ganic', 'Dr. M. Mahmoud', 'Muscle Add', 'Keep Going', 'Elements'],
-            datasets: [{
-                label: 'Content Marketing Cost (EGP)',
-                data: [17500, 30000, 17500, 6500, 50000, 12500, 3500],
-                backgroundColor: [
-                    '#ffd700',
-                    '#a371f7',
-                    '#3fb950',
-                    '#58a6ff',
-                    '#f85149',
-                    '#00f2ea',
-                    '#8b949e'
-                ],
-                borderRadius: 6
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return context.parsed.x.toLocaleString() + ' EGP';
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: '#8b949e',
-                        callback: function (value) {
-                            return value.toLocaleString();
-                        }
-                    },
-                    grid: { color: '#30363d' }
-                },
-                y: {
-                    ticks: { color: '#8b949e' },
-                    grid: { display: false }
-                }
-            }
-        }
-    });
-}
+        <!-- Section 6: Budget Intel -->
+        <section id="budget" class="section">
+            <h2>6. Budget Estimation & Spend Intelligence</h2>
 
-// Ad Spend Chart
-function initAdSpendChart() {
-    const ctx = document.getElementById('adSpendChart');
-    if (!ctx) return;
+            <!-- MaxGen Budget Highlight -->
+            <div class="cards-grid" style="margin-bottom: 24px;">
+                <div class="card highlight">
+                    <h3>MaxGen Content Marketing</h3>
+                    <p class="big-stat" style="color: #ffd700;">15,000 - 20,000 EGP</p>
+                    <span>Monthly content production cost</span>
+                </div>
+                <div class="card highlight">
+                    <h3>MaxGen Paid Ads</h3>
+                    <p class="big-stat" style="color: #58a6ff;">9,000 EGP</p>
+                    <span>Monthly paid advertising spend</span>
+                </div>
+                <div class="card">
+                    <h3>MaxGen Total Marketing</h3>
+                    <p class="big-stat" style="color: #3fb950;">24,000 - 29,000 EGP</p>
+                    <span>Combined monthly marketing budget</span>
+                </div>
+            </div>
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['MaxGen', 'Evolve', 'Pure Ganic', 'Dr. M. Mahmoud', 'Muscle Add', 'Keep Going', 'Elements'],
-            datasets: [{
-                label: 'Paid Ads Cost (EGP)',
-                data: [9000, 65000, 45000, 40000, 180000, 25000, 10000],
-                backgroundColor: [
-                    '#ffd700',
-                    '#a371f7',
-                    '#3fb950',
-                    '#58a6ff',
-                    '#f85149',
-                    '#00f2ea',
-                    '#8b949e'
-                ],
-                borderRadius: 6
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return context.parsed.x.toLocaleString() + ' EGP';
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: '#8b949e',
-                        callback: function (value) {
-                            return value.toLocaleString();
-                        }
-                    },
-                    grid: { color: '#30363d' }
-                },
-                y: {
-                    ticks: { color: '#8b949e' },
-                    grid: { display: false }
-                }
-            }
-        }
-    });
-}
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h3>Content Marketing Cost (EGP/Month)</h3>
+                    <canvas id="contentCostChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Paid Ads Spend (EGP/Month)</h3>
+                    <canvas id="adSpendChart"></canvas>
+                </div>
+            </div>
 
-// Budget Chart (Total)
-function initBudgetChart() {
-    const ctx = document.getElementById('budgetChart');
-    if (!ctx) return;
+            <div class="table-container">
+                <h3>Detailed Marketing Budget Breakdown</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Content Marketing Cost (EGP)</th>
+                            <th>Paid Ads Cost (EGP)</th>
+                            <th>Total Monthly (EGP)</th>
+                            <th>Production Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="client-row">
+                            <td><strong>MaxGen</strong></td>
+                            <td class="amount">15,000 - 20,000</td>
+                            <td class="amount">9,000</td>
+                            <td class="amount total">24,000 - 29,000</td>
+                            <td>High-Level Creative Agency</td>
+                        </tr>
+                        <tr>
+                            <td>Evolve</td>
+                            <td class="amount">25,000 - 35,000</td>
+                            <td class="amount">55,000 - 75,000</td>
+                            <td class="amount total">45,000 - 65,000</td>
+                            <td>High-Level Creative Agency</td>
+                        </tr>
+                        <tr>
+                            <td>Pure Ganic</td>
+                            <td class="amount">15,000 - 20,000</td>
+                            <td class="amount">40,000 - 50,000</td>
+                            <td class="amount total">55,000 - 70,000</td>
+                            <td>In-house</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. M. Mahmoud</td>
+                            <td class="amount">5,000 - 8,000</td>
+                            <td class="amount">35,000 - 45,000</td>
+                            <td class="amount total">40,000 - 53,000</td>
+                            <td>Personal (Time investment)</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Add</td>
+                            <td class="amount">40,000 - 60,000</td>
+                            <td class="amount">120,000 - 240,000</td>
+                            <td class="amount total">160,000 - 300,000</td>
+                            <td>Sponsorships + Events</td>
+                        </tr>
+                        <tr>
+                            <td>Keep Going</td>
+                            <td class="amount">12,000 - 17,000</td>
+                            <td class="amount">20,000 - 30,000</td>
+                            <td class="amount total">32,000 - 47,000</td>
+                            <td>Mixed</td>
+                        </tr>
+                        <tr>
+                            <td>Elements</td>
+                            <td class="amount">2,000 - 5,000</td>
+                            <td class="amount">8,000 - 12,000</td>
+                            <td class="amount total">10,000 - 17,000</td>
+                            <td>Marketplace Only</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['MaxGen', 'Evolve', 'Pure Ganic', 'Dr. M. Mahmoud', 'Muscle Add', 'Keep Going', 'Elements'],
-            datasets: [
-                {
-                    label: 'Content Marketing',
-                    data: [17500, 30000, 10000, 6500, 50000, 12500, 3500],
-                    backgroundColor: '#ffd700',
-                    borderRadius: 6
-                },
-                {
-                    label: 'Paid Ads',
-                    data: [9000, 65000, 45000, 40000, 180000, 25000, 10000],
-                    backgroundColor: '#58a6ff',
-                    borderRadius: 6
-                }
-            ]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#8b949e' }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return context.dataset.label + ': ' + context.parsed.x.toLocaleString() + ' EGP';
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    stacked: true,
-                    ticks: {
-                        color: '#8b949e',
-                        callback: function (value) {
-                            return value.toLocaleString() + ' EGP';
-                        }
-                    },
-                    grid: { color: '#30363d' }
-                },
-                y: {
-                    stacked: true,
-                    ticks: { color: '#8b949e' },
-                    grid: { display: false }
-                }
-            }
-        }
-    });
-}
+            <div class="chart-card wide">
+                <h3>Total Marketing Budget Comparison (EGP/Month)</h3>
+                <canvas id="budgetChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Section 7: Compliance -->
+        <section id="compliance" class="section">
+            <h2>7. Compliance & Claims Risk Analysis</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Medical Claims Risk</th>
+                            <th>Regulatory Exposure</th>
+                            <th>Doctor Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="client-row">
+                            <td>MaxGen</td>
+                            <td class="low-risk">Low</td>
+                            <td class="low-risk">Low</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td>Evolve</td>
+                            <td class="low-risk">Low</td>
+                            <td class="low-risk">Low</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td>Pure Ganic</td>
+                            <td class="medium-risk">Medium</td>
+                            <td class="low-risk">Low</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. M. Mahmoud</td>
+                            <td class="high-risk">HIGH</td>
+                            <td class="high-risk">HIGH</td>
+                            <td>Central</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Add</td>
+                            <td class="low-risk">Low</td>
+                            <td class="low-risk">Low</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td>Keep Going</td>
+                            <td class="low-risk">Low</td>
+                            <td class="low-risk">Low</td>
+                            <td>None</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 8: Recommendations -->
+        <section id="recommendations" class="section">
+            <h2>8. Strategic Recommendations for MaxGen</h2>
+            <div class="recommendations-grid">
+                <div class="rec-card">
+                    <h3>Content Strategy</h3>
+                    <ul>
+                        <li>Week 1: Education (Why MaxGen?)</li>
+                        <li>Week 2: Social Proof (Reviews)</li>
+                        <li>Week 3: Offer (Stack)</li>
+                        <li>Week 4: Lifestyle (Team)</li>
+                    </ul>
+                </div>
+                <div class="rec-card">
+                    <h3>Paid Media Funnel</h3>
+                    <ul>
+                        <li><strong>Top:</strong> Viral Myth-Busting Reels</li>
+                        <li><strong>Mid:</strong> "Us vs. Them" Comparison</li>
+                        <li><strong>Bottom:</strong> DPA + "Low Stock" Scarcity</li>
+                    </ul>
+                </div>
+                <div class="rec-card">
+                    <h3>Budget Allocation</h3>
+                    <div class="budget-split">
+                        <div class="split-item"><span class="pct">70%</span> Meta (IG/FB)</div>
+                        <div class="split-item"><span class="pct">20%</span> Google Search</div>
+                        <div class="split-item"><span class="pct">10%</span> TikTok</div>
+                    </div>
+                </div>
+                <div class="rec-card">
+                    <h3>Quick Wins</h3>
+                    <ul>
+                        <li>Add "Lab Tested" badges to website</li>
+                        <li>Create a "Sample Box" offer</li>
+                        <li>Promise "Cairo Next Day Delivery"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gaps-section">
+                <h3>Strategic Gaps & White-Space Opportunities</h3>
+                <div class="gaps-grid">
+                    <div class="gap-card">
+                        <h4>The Transparent Lab</h4>
+                        <p>No one fully owns "Show the Lab Report" transparency. MaxGen can own this.</p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>The Systems Approach</h4>
+                        <p>Sell stacks instead of tubs (e.g., "30-Day Mass Stack" with a guide).</p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>The Guaranteed Delivery</h4>
+                        <p>Delivery is a pain point (4 days). Offer "Cairo Next Day" to win.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Competitive Analysis Framework – Sports Supplements Market (Egypt) | MaxGen Supplements | February 2026
+            </p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

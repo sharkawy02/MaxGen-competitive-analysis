@@ -157,7 +157,7 @@ function initContentCostChart() {
             labels: ['MaxGen', 'Evolve', 'Pure Ganic', 'Dr. M. Mahmoud', 'Muscle Add', 'Keep Going', 'Elements'],
             datasets: [{
                 label: 'Content Marketing Cost (EGP)',
-                data: [17500, 30000, 10000, 6500, 50000, 12500, 3500],
+                data: [17500, 30000, 17500, 6500, 50000, 12500, 3500],
                 backgroundColor: [
                     '#ffd700',
                     '#a371f7',
